@@ -104,9 +104,14 @@ add_dependencies(medianFilter ${GENCPP_DEPS})
 
 set(ALVAR_TARGETS ar_track_alvar individualMarkers individualMarkersNoKinect trainMarkerBundle findMarkerBundles findMarkerBundlesNoKinect createMarker ar_track_alvar)
 
+add_executable(CubeCalibrationMarkers nodes/CubeCalibrationMarkers.cpp)
+target_link_libraries(CubeCalibrationMarkers ar_track_alvar kinect_filtering ${catkin_LIBRARIES})
+add_dependencies(CubeCalibrationMarkers ${PROJECT_NAME}_gencpp ${GENCPP_DEPS})
+
 add_executable(individualMarkers nodes/IndividualMarkers.cpp)
 target_link_libraries(individualMarkers ar_track_alvar kinect_filtering ${catkin_LIBRARIES})
 add_dependencies(individualMarkers ${PROJECT_NAME}_gencpp ${GENCPP_DEPS})
+
 
 add_executable(individualMarkersNoKinect nodes/IndividualMarkersNoKinect.cpp)
 target_link_libraries(individualMarkersNoKinect ar_track_alvar ${catkin_LIBRARIES})
